@@ -1,0 +1,526 @@
+GPU NVIDIA GeForce RTX 4090 (sm_89, 128 SMs). us/call, CUDA-graph replay, median of 7 windows of 100 calls.
+Configs:
+  C0  tile  16x 64x128 warp 16x64x64 stages 5  (vLLM today)
+  C1  tile  16x128x128 warp 16x64x64 stages 4  (vLLM today)
+  C2  tile  32x 64x128 warp 16x64x64 stages 5  (vLLM today)
+  C3  tile  32x128x128 warp 32x64x64 stages 4  (vLLM today)
+  C4  tile  64x 64x128 warp 32x64x64 stages 5  (vLLM today)
+  C5  tile  64x128x128 warp 64x64x64 stages 3  (vLLM today)
+  C6  tile  16x 32x128 warp 16x32x64 stages 6
+  C7  tile  16x 64x 64 warp 16x32x64 stages 6
+  C8  tile  16x128x 64 warp 16x32x64 stages 5
+  C9  tile  32x 32x128 warp 16x32x64 stages 6
+  C10 tile  32x 64x 64 warp 16x32x64 stages 6
+  C11 tile  32x128x 64 warp 32x32x64 stages 5
+  C12 tile  32x 64x128 warp 32x32x64 stages 5
+  C13 tile  64x 32x128 warp 32x32x64 stages 6
+  C14 tile  64x 64x 64 warp 32x32x64 stages 6
+  C15 tile  64x128x 64 warp 32x64x64 stages 4
+
+shape,K,N,M,config,us,ok
+q_proj/o_proj,2048,2048,16,C0,4.41,ok
+q_proj/o_proj,2048,2048,16,C1,5.60,ok
+q_proj/o_proj,2048,2048,16,C2,4.44,ok
+q_proj/o_proj,2048,2048,16,C3,6.18,ok
+q_proj/o_proj,2048,2048,16,C4,5.71,ok
+q_proj/o_proj,2048,2048,16,C5,9.49,ok
+q_proj/o_proj,2048,2048,16,C7,4.39,ok
+q_proj/o_proj,2048,2048,16,C10,4.84,ok
+q_proj/o_proj,2048,2048,16,C11,6.25,ok
+q_proj/o_proj,2048,2048,16,C14,5.86,ok
+q_proj/o_proj,2048,2048,16,C15,8.60,ok
+# q_proj/o_proj M=16: vLLM today C0 4.41 us | best C7 4.39 us | 1.00x
+q_proj/o_proj,2048,2048,17,C0,4.51,ok
+q_proj/o_proj,2048,2048,17,C1,5.68,ok
+q_proj/o_proj,2048,2048,17,C2,4.45,ok
+q_proj/o_proj,2048,2048,17,C3,6.18,ok
+q_proj/o_proj,2048,2048,17,C4,5.71,ok
+q_proj/o_proj,2048,2048,17,C5,9.49,ok
+q_proj/o_proj,2048,2048,17,C7,4.47,ok
+q_proj/o_proj,2048,2048,17,C10,4.87,ok
+q_proj/o_proj,2048,2048,17,C11,6.25,ok
+q_proj/o_proj,2048,2048,17,C14,5.87,ok
+q_proj/o_proj,2048,2048,17,C15,8.60,ok
+# q_proj/o_proj M=17: vLLM today C2 4.45 us | best C2 4.45 us | 1.00x
+q_proj/o_proj,2048,2048,24,C0,4.52,ok
+q_proj/o_proj,2048,2048,24,C1,5.73,ok
+q_proj/o_proj,2048,2048,24,C2,4.59,ok
+q_proj/o_proj,2048,2048,24,C3,6.23,ok
+q_proj/o_proj,2048,2048,24,C4,5.87,ok
+q_proj/o_proj,2048,2048,24,C5,9.55,ok
+q_proj/o_proj,2048,2048,24,C7,4.55,ok
+q_proj/o_proj,2048,2048,24,C10,4.94,ok
+q_proj/o_proj,2048,2048,24,C11,6.35,ok
+q_proj/o_proj,2048,2048,24,C14,5.57,ok
+q_proj/o_proj,2048,2048,24,C15,8.06,ok
+# q_proj/o_proj M=24: vLLM today C2 4.59 us | best C0 4.52 us | 1.02x
+q_proj/o_proj,2048,2048,32,C0,4.30,ok
+q_proj/o_proj,2048,2048,32,C1,5.47,ok
+q_proj/o_proj,2048,2048,32,C2,4.37,ok
+q_proj/o_proj,2048,2048,32,C3,6.03,ok
+q_proj/o_proj,2048,2048,32,C4,5.54,ok
+q_proj/o_proj,2048,2048,32,C5,8.99,ok
+q_proj/o_proj,2048,2048,32,C7,4.34,ok
+q_proj/o_proj,2048,2048,32,C10,4.68,ok
+q_proj/o_proj,2048,2048,32,C11,6.03,ok
+q_proj/o_proj,2048,2048,32,C14,5.61,ok
+q_proj/o_proj,2048,2048,32,C15,8.09,ok
+# q_proj/o_proj M=32: vLLM today C2 4.37 us | best C0 4.30 us | 1.02x
+q_proj/o_proj,2048,2048,33,C0,4.94,ok
+q_proj/o_proj,2048,2048,33,C1,5.71,ok
+q_proj/o_proj,2048,2048,33,C2,4.43,ok
+q_proj/o_proj,2048,2048,33,C3,6.05,ok
+q_proj/o_proj,2048,2048,33,C4,5.57,ok
+q_proj/o_proj,2048,2048,33,C5,8.99,ok
+q_proj/o_proj,2048,2048,33,C7,5.04,ok
+q_proj/o_proj,2048,2048,33,C10,4.78,ok
+q_proj/o_proj,2048,2048,33,C11,6.04,ok
+q_proj/o_proj,2048,2048,33,C14,5.62,ok
+q_proj/o_proj,2048,2048,33,C15,8.09,ok
+# q_proj/o_proj M=33: vLLM today C4 5.57 us | best C2 4.43 us | 1.26x
+q_proj/o_proj,2048,2048,48,C0,5.23,ok
+q_proj/o_proj,2048,2048,48,C1,5.81,ok
+q_proj/o_proj,2048,2048,48,C2,4.53,ok
+q_proj/o_proj,2048,2048,48,C3,6.06,ok
+q_proj/o_proj,2048,2048,48,C4,5.62,ok
+q_proj/o_proj,2048,2048,48,C5,9.05,ok
+q_proj/o_proj,2048,2048,48,C7,5.09,ok
+q_proj/o_proj,2048,2048,48,C10,4.78,ok
+q_proj/o_proj,2048,2048,48,C11,6.04,ok
+q_proj/o_proj,2048,2048,48,C14,5.66,ok
+q_proj/o_proj,2048,2048,48,C15,8.12,ok
+# q_proj/o_proj M=48: vLLM today C4 5.62 us | best C2 4.53 us | 1.24x
+q_proj/o_proj,2048,2048,64,C0,6.26,ok
+q_proj/o_proj,2048,2048,64,C1,6.07,ok
+q_proj/o_proj,2048,2048,64,C2,4.75,ok
+q_proj/o_proj,2048,2048,64,C3,6.13,ok
+q_proj/o_proj,2048,2048,64,C4,5.68,ok
+q_proj/o_proj,2048,2048,64,C5,9.10,ok
+q_proj/o_proj,2048,2048,64,C7,5.99,ok
+q_proj/o_proj,2048,2048,64,C10,4.81,ok
+q_proj/o_proj,2048,2048,64,C11,6.05,ok
+q_proj/o_proj,2048,2048,64,C14,5.74,ok
+q_proj/o_proj,2048,2048,64,C15,8.17,ok
+# q_proj/o_proj M=64: vLLM today C4 5.68 us | best C2 4.75 us | 1.20x
+k_proj/v_proj,2048,1024,16,C0,4.05,ok
+k_proj/v_proj,2048,1024,16,C1,5.14,ok
+k_proj/v_proj,2048,1024,16,C2,4.09,ok
+k_proj/v_proj,2048,1024,16,C3,5.77,ok
+k_proj/v_proj,2048,1024,16,C4,5.26,ok
+k_proj/v_proj,2048,1024,16,C5,8.84,ok
+k_proj/v_proj,2048,1024,16,C7,4.03,ok
+k_proj/v_proj,2048,1024,16,C10,4.47,ok
+k_proj/v_proj,2048,1024,16,C11,5.84,ok
+k_proj/v_proj,2048,1024,16,C14,5.42,ok
+k_proj/v_proj,2048,1024,16,C15,8.05,ok
+# k_proj/v_proj M=16: vLLM today C0 4.05 us | best C7 4.03 us | 1.00x
+k_proj/v_proj,2048,1024,17,C0,4.10,ok
+k_proj/v_proj,2048,1024,17,C1,5.18,ok
+k_proj/v_proj,2048,1024,17,C2,4.10,ok
+k_proj/v_proj,2048,1024,17,C3,5.77,ok
+k_proj/v_proj,2048,1024,17,C4,5.27,ok
+k_proj/v_proj,2048,1024,17,C5,8.84,ok
+k_proj/v_proj,2048,1024,17,C7,4.12,ok
+k_proj/v_proj,2048,1024,17,C10,4.50,ok
+k_proj/v_proj,2048,1024,17,C11,5.85,ok
+k_proj/v_proj,2048,1024,17,C14,5.43,ok
+k_proj/v_proj,2048,1024,17,C15,8.06,ok
+# k_proj/v_proj M=17: vLLM today C2 4.10 us | best C0 4.10 us | 1.00x
+k_proj/v_proj,2048,1024,24,C0,4.12,ok
+k_proj/v_proj,2048,1024,24,C1,5.20,ok
+k_proj/v_proj,2048,1024,24,C2,4.16,ok
+k_proj/v_proj,2048,1024,24,C3,5.78,ok
+k_proj/v_proj,2048,1024,24,C4,5.29,ok
+k_proj/v_proj,2048,1024,24,C5,8.85,ok
+k_proj/v_proj,2048,1024,24,C7,4.13,ok
+k_proj/v_proj,2048,1024,24,C10,4.53,ok
+k_proj/v_proj,2048,1024,24,C11,5.86,ok
+k_proj/v_proj,2048,1024,24,C14,5.43,ok
+k_proj/v_proj,2048,1024,24,C15,8.06,ok
+# k_proj/v_proj M=24: vLLM today C2 4.16 us | best C0 4.12 us | 1.01x
+k_proj/v_proj,2048,1024,32,C0,4.15,ok
+k_proj/v_proj,2048,1024,32,C1,5.26,ok
+k_proj/v_proj,2048,1024,32,C2,4.26,ok
+k_proj/v_proj,2048,1024,32,C3,5.89,ok
+k_proj/v_proj,2048,1024,32,C4,5.37,ok
+k_proj/v_proj,2048,1024,32,C5,8.88,ok
+k_proj/v_proj,2048,1024,32,C7,4.17,ok
+k_proj/v_proj,2048,1024,32,C10,4.59,ok
+k_proj/v_proj,2048,1024,32,C11,5.92,ok
+k_proj/v_proj,2048,1024,32,C14,5.56,ok
+k_proj/v_proj,2048,1024,32,C15,8.08,ok
+# k_proj/v_proj M=32: vLLM today C2 4.26 us | best C0 4.15 us | 1.03x
+k_proj/v_proj,2048,1024,33,C0,4.29,ok
+k_proj/v_proj,2048,1024,33,C1,5.28,ok
+k_proj/v_proj,2048,1024,33,C2,4.27,ok
+k_proj/v_proj,2048,1024,33,C3,5.93,ok
+k_proj/v_proj,2048,1024,33,C4,5.38,ok
+k_proj/v_proj,2048,1024,33,C5,8.87,ok
+k_proj/v_proj,2048,1024,33,C7,4.24,ok
+k_proj/v_proj,2048,1024,33,C10,4.66,ok
+k_proj/v_proj,2048,1024,33,C11,5.99,ok
+k_proj/v_proj,2048,1024,33,C14,5.57,ok
+k_proj/v_proj,2048,1024,33,C15,8.08,ok
+# k_proj/v_proj M=33: vLLM today C4 5.38 us | best C7 4.24 us | 1.27x
+k_proj/v_proj,2048,1024,48,C0,4.31,ok
+k_proj/v_proj,2048,1024,48,C1,5.31,ok
+k_proj/v_proj,2048,1024,48,C2,4.27,ok
+k_proj/v_proj,2048,1024,48,C3,5.93,ok
+k_proj/v_proj,2048,1024,48,C4,5.49,ok
+k_proj/v_proj,2048,1024,48,C5,8.92,ok
+k_proj/v_proj,2048,1024,48,C7,4.24,ok
+k_proj/v_proj,2048,1024,48,C10,4.64,ok
+k_proj/v_proj,2048,1024,48,C11,5.98,ok
+k_proj/v_proj,2048,1024,48,C14,5.57,ok
+k_proj/v_proj,2048,1024,48,C15,8.11,ok
+# k_proj/v_proj M=48: vLLM today C4 5.49 us | best C7 4.24 us | 1.30x
+k_proj/v_proj,2048,1024,64,C0,4.29,ok
+k_proj/v_proj,2048,1024,64,C1,5.42,ok
+k_proj/v_proj,2048,1024,64,C2,4.31,ok
+k_proj/v_proj,2048,1024,64,C3,6.01,ok
+k_proj/v_proj,2048,1024,64,C4,5.61,ok
+k_proj/v_proj,2048,1024,64,C5,8.96,ok
+k_proj/v_proj,2048,1024,64,C7,4.22,ok
+k_proj/v_proj,2048,1024,64,C10,4.65,ok
+k_proj/v_proj,2048,1024,64,C11,5.97,ok
+k_proj/v_proj,2048,1024,64,C14,5.65,ok
+k_proj/v_proj,2048,1024,64,C15,8.14,ok
+# k_proj/v_proj M=64: vLLM today C4 5.61 us | best C7 4.22 us | 1.33x
+qkv_proj,2048,4096,16,C0,4.44,ok
+qkv_proj,2048,4096,16,C1,5.46,ok
+qkv_proj,2048,4096,16,C2,4.50,ok
+qkv_proj,2048,4096,16,C3,5.84,ok
+qkv_proj,2048,4096,16,C4,5.54,ok
+qkv_proj,2048,4096,16,C5,9.03,ok
+qkv_proj,2048,4096,16,C7,4.54,ok
+qkv_proj,2048,4096,16,C10,4.80,ok
+qkv_proj,2048,4096,16,C11,5.96,ok
+qkv_proj,2048,4096,16,C14,5.68,ok
+qkv_proj,2048,4096,16,C15,8.13,ok
+# qkv_proj M=16: vLLM today C0 4.44 us | best C0 4.44 us | 1.00x
+qkv_proj,2048,4096,17,C0,5.99,ok
+qkv_proj,2048,4096,17,C1,5.92,ok
+qkv_proj,2048,4096,17,C2,4.69,ok
+qkv_proj,2048,4096,17,C3,5.86,ok
+qkv_proj,2048,4096,17,C4,5.54,ok
+qkv_proj,2048,4096,17,C5,9.03,ok
+qkv_proj,2048,4096,17,C7,6.23,ok
+qkv_proj,2048,4096,17,C10,4.97,ok
+qkv_proj,2048,4096,17,C11,5.97,ok
+qkv_proj,2048,4096,17,C14,5.68,ok
+qkv_proj,2048,4096,17,C15,8.14,ok
+# qkv_proj M=17: vLLM today C2 4.69 us | best C2 4.69 us | 1.00x
+qkv_proj,2048,4096,24,C0,6.13,ok
+qkv_proj,2048,4096,24,C1,5.99,ok
+qkv_proj,2048,4096,24,C2,4.85,ok
+qkv_proj,2048,4096,24,C3,5.92,ok
+qkv_proj,2048,4096,24,C4,5.63,ok
+qkv_proj,2048,4096,24,C5,9.08,ok
+qkv_proj,2048,4096,24,C7,6.31,ok
+qkv_proj,2048,4096,24,C10,5.04,ok
+qkv_proj,2048,4096,24,C11,6.06,ok
+qkv_proj,2048,4096,24,C14,5.80,ok
+qkv_proj,2048,4096,24,C15,8.21,ok
+# qkv_proj M=24: vLLM today C2 4.85 us | best C2 4.85 us | 1.00x
+qkv_proj,2048,4096,32,C0,6.17,ok
+qkv_proj,2048,4096,32,C1,6.07,ok
+qkv_proj,2048,4096,32,C2,4.98,ok
+qkv_proj,2048,4096,32,C3,6.18,ok
+qkv_proj,2048,4096,32,C4,5.77,ok
+qkv_proj,2048,4096,32,C5,9.11,ok
+qkv_proj,2048,4096,32,C7,6.56,ok
+qkv_proj,2048,4096,32,C10,5.23,ok
+qkv_proj,2048,4096,32,C11,6.10,ok
+qkv_proj,2048,4096,32,C14,5.94,ok
+qkv_proj,2048,4096,32,C15,8.27,ok
+# qkv_proj M=32: vLLM today C2 4.98 us | best C2 4.98 us | 1.00x
+qkv_proj,2048,4096,33,C0,9.56,ok
+qkv_proj,2048,4096,33,C1,7.33,ok
+qkv_proj,2048,4096,33,C2,6.28,ok
+qkv_proj,2048,4096,33,C3,6.45,ok
+qkv_proj,2048,4096,33,C4,5.78,ok
+qkv_proj,2048,4096,33,C5,9.12,ok
+qkv_proj,2048,4096,33,C7,8.07,ok
+qkv_proj,2048,4096,33,C10,6.64,ok
+qkv_proj,2048,4096,33,C11,6.20,ok
+qkv_proj,2048,4096,33,C14,5.94,ok
+qkv_proj,2048,4096,33,C15,8.26,ok
+# qkv_proj M=33: vLLM today C4 5.78 us | best C4 5.78 us | 1.00x
+qkv_proj,2048,4096,48,C0,9.96,ok
+qkv_proj,2048,4096,48,C1,7.58,ok
+qkv_proj,2048,4096,48,C2,6.71,ok
+qkv_proj,2048,4096,48,C3,6.52,ok
+qkv_proj,2048,4096,48,C4,5.85,ok
+qkv_proj,2048,4096,48,C5,9.17,ok
+qkv_proj,2048,4096,48,C7,8.29,ok
+qkv_proj,2048,4096,48,C10,6.74,ok
+qkv_proj,2048,4096,48,C11,6.26,ok
+qkv_proj,2048,4096,48,C14,5.93,ok
+qkv_proj,2048,4096,48,C15,8.30,ok
+# qkv_proj M=48: vLLM today C4 5.85 us | best C4 5.85 us | 1.00x
+qkv_proj,2048,4096,64,C0,11.40,ok
+qkv_proj,2048,4096,64,C1,9.47,ok
+qkv_proj,2048,4096,64,C2,7.12,ok
+qkv_proj,2048,4096,64,C3,6.81,ok
+qkv_proj,2048,4096,64,C4,6.15,ok
+qkv_proj,2048,4096,64,C5,9.24,ok
+qkv_proj,2048,4096,64,C7,10.43,ok
+qkv_proj,2048,4096,64,C10,7.31,ok
+qkv_proj,2048,4096,64,C11,6.38,ok
+qkv_proj,2048,4096,64,C14,6.01,ok
+qkv_proj,2048,4096,64,C15,8.31,ok
+# qkv_proj M=64: vLLM today C4 6.15 us | best C14 6.01 us | 1.02x
+gate/up_proj,2048,6144,16,C0,5.51,ok
+gate/up_proj,2048,6144,16,C1,5.94,ok
+gate/up_proj,2048,6144,16,C2,5.57,ok
+gate/up_proj,2048,6144,16,C3,5.95,ok
+gate/up_proj,2048,6144,16,C4,6.28,ok
+gate/up_proj,2048,6144,16,C5,9.14,ok
+gate/up_proj,2048,6144,16,C7,5.85,ok
+gate/up_proj,2048,6144,16,C10,5.93,ok
+gate/up_proj,2048,6144,16,C11,6.09,ok
+gate/up_proj,2048,6144,16,C14,6.36,ok
+gate/up_proj,2048,6144,16,C15,8.29,ok
+# gate/up_proj M=16: vLLM today C0 5.51 us | best C0 5.51 us | 1.00x
+gate/up_proj,2048,6144,17,C0,9.51,ok
+gate/up_proj,2048,6144,17,C1,7.43,ok
+gate/up_proj,2048,6144,17,C2,6.02,ok
+gate/up_proj,2048,6144,17,C3,5.96,ok
+gate/up_proj,2048,6144,17,C4,6.51,ok
+gate/up_proj,2048,6144,17,C5,9.14,ok
+gate/up_proj,2048,6144,17,C7,8.47,ok
+gate/up_proj,2048,6144,17,C10,6.51,ok
+gate/up_proj,2048,6144,17,C11,6.08,ok
+gate/up_proj,2048,6144,17,C14,6.77,ok
+gate/up_proj,2048,6144,17,C15,8.30,ok
+# gate/up_proj M=17: vLLM today C2 6.02 us | best C3 5.96 us | 1.01x
+gate/up_proj,2048,6144,24,C0,9.81,ok
+gate/up_proj,2048,6144,24,C1,7.57,ok
+gate/up_proj,2048,6144,24,C2,6.15,ok
+gate/up_proj,2048,6144,24,C3,6.25,ok
+gate/up_proj,2048,6144,24,C4,6.58,ok
+gate/up_proj,2048,6144,24,C5,9.20,ok
+gate/up_proj,2048,6144,24,C7,8.54,ok
+gate/up_proj,2048,6144,24,C10,6.59,ok
+gate/up_proj,2048,6144,24,C11,6.14,ok
+gate/up_proj,2048,6144,24,C14,6.89,ok
+gate/up_proj,2048,6144,24,C15,8.33,ok
+# gate/up_proj M=24: vLLM today C2 6.15 us | best C11 6.14 us | 1.00x
+gate/up_proj,2048,6144,32,C0,9.98,ok
+gate/up_proj,2048,6144,32,C1,7.63,ok
+gate/up_proj,2048,6144,32,C2,6.36,ok
+gate/up_proj,2048,6144,32,C3,6.52,ok
+gate/up_proj,2048,6144,32,C4,6.79,ok
+gate/up_proj,2048,6144,32,C5,9.29,ok
+gate/up_proj,2048,6144,32,C7,9.09,ok
+gate/up_proj,2048,6144,32,C10,6.86,ok
+gate/up_proj,2048,6144,32,C11,6.25,ok
+gate/up_proj,2048,6144,32,C14,7.21,ok
+gate/up_proj,2048,6144,32,C15,8.39,ok
+# gate/up_proj M=32: vLLM today C2 6.36 us | best C11 6.25 us | 1.02x
+gate/up_proj,2048,6144,33,C0,13.68,ok
+gate/up_proj,2048,6144,33,C1,14.18,ok
+gate/up_proj,2048,6144,33,C2,9.91,ok
+gate/up_proj,2048,6144,33,C3,8.15,ok
+gate/up_proj,2048,6144,33,C4,6.80,ok
+gate/up_proj,2048,6144,33,C5,9.30,ok
+gate/up_proj,2048,6144,33,C7,12.19,ok
+gate/up_proj,2048,6144,33,C10,9.24,ok
+gate/up_proj,2048,6144,33,C11,8.21,ok
+gate/up_proj,2048,6144,33,C14,7.20,ok
+gate/up_proj,2048,6144,33,C15,8.39,ok
+# gate/up_proj M=33: vLLM today C4 6.80 us | best C4 6.80 us | 1.00x
+gate/up_proj,2048,6144,48,C0,14.26,ok
+gate/up_proj,2048,6144,48,C1,14.38,ok
+gate/up_proj,2048,6144,48,C2,10.54,ok
+gate/up_proj,2048,6144,48,C3,8.46,ok
+gate/up_proj,2048,6144,48,C4,7.03,ok
+gate/up_proj,2048,6144,48,C5,9.32,ok
+gate/up_proj,2048,6144,48,C7,12.54,ok
+gate/up_proj,2048,6144,48,C10,9.65,ok
+gate/up_proj,2048,6144,48,C11,8.27,ok
+gate/up_proj,2048,6144,48,C14,7.33,ok
+gate/up_proj,2048,6144,48,C15,8.41,ok
+# gate/up_proj M=48: vLLM today C4 7.03 us | best C4 7.03 us | 1.00x
+gate/up_proj,2048,6144,64,C0,16.23,ok
+gate/up_proj,2048,6144,64,C1,15.88,ok
+gate/up_proj,2048,6144,64,C2,11.10,ok
+gate/up_proj,2048,6144,64,C3,8.69,ok
+gate/up_proj,2048,6144,64,C4,7.61,ok
+gate/up_proj,2048,6144,64,C5,9.38,ok
+gate/up_proj,2048,6144,64,C7,14.83,ok
+gate/up_proj,2048,6144,64,C10,10.48,ok
+gate/up_proj,2048,6144,64,C11,8.66,ok
+gate/up_proj,2048,6144,64,C14,7.72,ok
+gate/up_proj,2048,6144,64,C15,8.43,ok
+# gate/up_proj M=64: vLLM today C4 7.61 us | best C4 7.61 us | 1.00x
+gate_up_proj,2048,12288,16,C0,10.40,ok
+gate_up_proj,2048,12288,16,C1,7.83,ok
+gate_up_proj,2048,12288,16,C2,10.31,ok
+gate_up_proj,2048,12288,16,C3,8.28,ok
+gate_up_proj,2048,12288,16,C4,11.72,ok
+gate_up_proj,2048,12288,16,C5,9.78,ok
+gate_up_proj,2048,12288,16,C7,9.92,ok
+gate_up_proj,2048,12288,16,C10,10.07,ok
+gate_up_proj,2048,12288,16,C11,8.46,ok
+gate_up_proj,2048,12288,16,C14,10.54,ok
+gate_up_proj,2048,12288,16,C15,9.15,ok
+# gate_up_proj M=16: vLLM today C1 7.83 us | best C1 7.83 us | 1.00x
+gate_up_proj,2048,12288,17,C0,15.73,ok
+gate_up_proj,2048,12288,17,C1,15.00,ok
+gate_up_proj,2048,12288,17,C2,11.01,ok
+gate_up_proj,2048,12288,17,C3,8.81,ok
+gate_up_proj,2048,12288,17,C4,12.40,ok
+gate_up_proj,2048,12288,17,C5,10.32,ok
+gate_up_proj,2048,12288,17,C7,15.64,ok
+gate_up_proj,2048,12288,17,C10,11.16,ok
+gate_up_proj,2048,12288,17,C11,9.06,ok
+gate_up_proj,2048,12288,17,C14,11.64,ok
+gate_up_proj,2048,12288,17,C15,9.66,ok
+# gate_up_proj M=17: vLLM today C3 8.81 us | best C3 8.81 us | 1.00x
+gate_up_proj,2048,12288,24,C0,16.25,ok
+gate_up_proj,2048,12288,24,C1,15.65,ok
+gate_up_proj,2048,12288,24,C2,11.54,ok
+gate_up_proj,2048,12288,24,C3,8.91,ok
+gate_up_proj,2048,12288,24,C4,12.81,ok
+gate_up_proj,2048,12288,24,C5,10.49,ok
+gate_up_proj,2048,12288,24,C7,15.90,ok
+gate_up_proj,2048,12288,24,C10,11.29,ok
+gate_up_proj,2048,12288,24,C11,9.15,ok
+gate_up_proj,2048,12288,24,C14,11.83,ok
+gate_up_proj,2048,12288,24,C15,9.79,ok
+# gate_up_proj M=24: vLLM today C3 8.91 us | best C3 8.91 us | 1.00x
+gate_up_proj,2048,12288,32,C0,16.40,ok
+gate_up_proj,2048,12288,32,C1,15.61,ok
+gate_up_proj,2048,12288,32,C2,11.61,ok
+gate_up_proj,2048,12288,32,C3,9.24,ok
+gate_up_proj,2048,12288,32,C4,12.82,ok
+gate_up_proj,2048,12288,32,C5,10.80,ok
+gate_up_proj,2048,12288,32,C7,16.41,ok
+gate_up_proj,2048,12288,32,C10,12.03,ok
+gate_up_proj,2048,12288,32,C11,9.40,ok
+gate_up_proj,2048,12288,32,C14,12.66,ok
+gate_up_proj,2048,12288,32,C15,10.13,ok
+# gate_up_proj M=32: vLLM today C3 9.24 us | best C3 9.24 us | 1.00x
+gate_up_proj,2048,12288,33,C0,23.05,ok
+gate_up_proj,2048,12288,33,C1,22.43,ok
+gate_up_proj,2048,12288,33,C2,16.78,ok
+gate_up_proj,2048,12288,33,C3,16.38,ok
+gate_up_proj,2048,12288,33,C4,12.86,ok
+gate_up_proj,2048,12288,33,C5,10.80,ok
+gate_up_proj,2048,12288,33,C7,22.01,ok
+gate_up_proj,2048,12288,33,C10,16.86,ok
+gate_up_proj,2048,12288,33,C11,15.98,ok
+gate_up_proj,2048,12288,33,C14,12.65,ok
+gate_up_proj,2048,12288,33,C15,10.16,ok
+# gate_up_proj M=33: vLLM today C5 10.80 us | best C15 10.16 us | 1.06x
+gate_up_proj,2048,12288,48,C0,24.12,ok
+gate_up_proj,2048,12288,48,C1,23.50,ok
+gate_up_proj,2048,12288,48,C2,17.69,ok
+gate_up_proj,2048,12288,48,C3,17.39,ok
+gate_up_proj,2048,12288,48,C4,13.88,ok
+gate_up_proj,2048,12288,48,C5,11.06,ok
+gate_up_proj,2048,12288,48,C7,22.96,ok
+gate_up_proj,2048,12288,48,C10,18.31,ok
+gate_up_proj,2048,12288,48,C11,16.55,ok
+gate_up_proj,2048,12288,48,C14,12.87,ok
+gate_up_proj,2048,12288,48,C15,10.33,ok
+# gate_up_proj M=48: vLLM today C5 11.06 us | best C15 10.33 us | 1.07x
+gate_up_proj,2048,12288,64,C0,30.44,ok
+gate_up_proj,2048,12288,64,C1,26.72,ok
+gate_up_proj,2048,12288,64,C2,18.85,ok
+gate_up_proj,2048,12288,64,C3,18.05,ok
+gate_up_proj,2048,12288,64,C4,15.18,ok
+gate_up_proj,2048,12288,64,C5,11.46,ok
+gate_up_proj,2048,12288,64,C7,27.49,ok
+gate_up_proj,2048,12288,64,C10,19.41,ok
+gate_up_proj,2048,12288,64,C11,17.13,ok
+gate_up_proj,2048,12288,64,C14,13.73,ok
+gate_up_proj,2048,12288,64,C15,10.61,ok
+# gate_up_proj M=64: vLLM today C5 11.46 us | best C15 10.61 us | 1.08x
+down_proj,6144,2048,16,C0,9.09,ok
+down_proj,6144,2048,16,C1,12.66,ok
+down_proj,6144,2048,16,C2,8.93,ok
+down_proj,6144,2048,16,C3,13.10,ok
+down_proj,6144,2048,16,C4,12.23,ok
+down_proj,6144,2048,16,C5,21.87,ok
+down_proj,6144,2048,16,C7,9.45,ok
+down_proj,6144,2048,16,C10,10.73,ok
+down_proj,6144,2048,16,C11,14.40,ok
+down_proj,6144,2048,16,C14,13.30,ok
+down_proj,6144,2048,16,C15,20.67,ok
+# down_proj M=16: vLLM today C0 9.09 us | best C2 8.93 us | 1.02x
+down_proj,6144,2048,17,C0,9.22,ok
+down_proj,6144,2048,17,C1,12.89,ok
+down_proj,6144,2048,17,C2,8.96,ok
+down_proj,6144,2048,17,C3,13.11,ok
+down_proj,6144,2048,17,C4,12.22,ok
+down_proj,6144,2048,17,C5,21.87,ok
+down_proj,6144,2048,17,C7,9.56,ok
+down_proj,6144,2048,17,C10,10.88,ok
+down_proj,6144,2048,17,C11,14.41,ok
+down_proj,6144,2048,17,C14,13.31,ok
+down_proj,6144,2048,17,C15,20.65,ok
+# down_proj M=17: vLLM today C2 8.96 us | best C2 8.96 us | 1.00x
+down_proj,6144,2048,24,C0,9.21,ok
+down_proj,6144,2048,24,C1,12.98,ok
+down_proj,6144,2048,24,C2,9.03,ok
+down_proj,6144,2048,24,C3,13.16,ok
+down_proj,6144,2048,24,C4,12.25,ok
+down_proj,6144,2048,24,C5,21.89,ok
+down_proj,6144,2048,24,C7,9.56,ok
+down_proj,6144,2048,24,C10,10.90,ok
+down_proj,6144,2048,24,C11,14.47,ok
+down_proj,6144,2048,24,C14,13.34,ok
+down_proj,6144,2048,24,C15,20.70,ok
+# down_proj M=24: vLLM today C2 9.03 us | best C2 9.03 us | 1.00x
+down_proj,6144,2048,32,C0,9.27,ok
+down_proj,6144,2048,32,C1,13.22,ok
+down_proj,6144,2048,32,C2,9.23,ok
+down_proj,6144,2048,32,C3,14.05,ok
+down_proj,6144,2048,32,C4,12.38,ok
+down_proj,6144,2048,32,C5,21.93,ok
+down_proj,6144,2048,32,C7,9.69,ok
+down_proj,6144,2048,32,C10,11.00,ok
+down_proj,6144,2048,32,C11,14.50,ok
+down_proj,6144,2048,32,C14,13.39,ok
+down_proj,6144,2048,32,C15,20.70,ok
+# down_proj M=32: vLLM today C2 9.23 us | best C2 9.23 us | 1.00x
+down_proj,6144,2048,33,C0,10.97,ok
+down_proj,6144,2048,33,C1,14.01,ok
+down_proj,6144,2048,33,C2,9.31,ok
+down_proj,6144,2048,33,C3,14.11,ok
+down_proj,6144,2048,33,C4,12.37,ok
+down_proj,6144,2048,33,C5,21.92,ok
+down_proj,6144,2048,33,C7,11.47,ok
+down_proj,6144,2048,33,C10,11.13,ok
+down_proj,6144,2048,33,C11,14.59,ok
+down_proj,6144,2048,33,C14,13.39,ok
+down_proj,6144,2048,33,C15,20.72,ok
+# down_proj M=33: vLLM today C4 12.37 us | best C2 9.31 us | 1.33x
+down_proj,6144,2048,48,C0,11.51,ok
+down_proj,6144,2048,48,C1,14.20,ok
+down_proj,6144,2048,48,C2,9.49,ok
+down_proj,6144,2048,48,C3,14.14,ok
+down_proj,6144,2048,48,C4,12.49,ok
+down_proj,6144,2048,48,C5,21.98,ok
+down_proj,6144,2048,48,C7,11.82,ok
+down_proj,6144,2048,48,C10,11.15,ok
+down_proj,6144,2048,48,C11,14.58,ok
+down_proj,6144,2048,48,C14,13.48,ok
+down_proj,6144,2048,48,C15,20.74,ok
+# down_proj M=48: vLLM today C4 12.49 us | best C2 9.49 us | 1.32x
+down_proj,6144,2048,64,C0,14.73,ok
+down_proj,6144,2048,64,C1,14.61,ok
+down_proj,6144,2048,64,C2,10.07,ok
+down_proj,6144,2048,64,C3,14.22,ok
+down_proj,6144,2048,64,C4,12.65,ok
+down_proj,6144,2048,64,C5,22.06,ok
+down_proj,6144,2048,64,C7,14.86,ok
+down_proj,6144,2048,64,C10,11.18,ok
+down_proj,6144,2048,64,C11,14.60,ok
+down_proj,6144,2048,64,C14,13.61,ok
+down_proj,6144,2048,64,C15,20.87,ok
+# down_proj M=64: vLLM today C4 12.65 us | best C2 10.07 us | 1.26x
+
+ALL CORRECT: 0 wrong outputs.

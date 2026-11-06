@@ -1,0 +1,189 @@
+
+Benchmarking DeepSeek-V3, N=576 K=7168
+TFLOP/s comparison (block_size=(128, 128)):
+Using default W8A8 Block FP8 kernel config. Performance might be sub-optimal! Config file not found at /workspace/vllm/vllm/model_executor/layers/quantization/utils/configs/N=576,K=7168,device_name=NVIDIA_H100_PCIe,dtype=fp8_w8a8,block_shape=[128,128].json
+BF16 vs W8A8 Block FP8 GEMMs:
+    batch_size  torch-bf16 (TFLOP/s (larger is better))  w8a8-block-fp8-triton (TFLOP/s (larger is better))  w8a8-block-fp8-cutlass (TFLOP/s (larger is better))
+0          1.0                                 0.822806                                            0.105100                                             0.277180
+1         16.0                                11.985274                                            1.618957                                             2.905202
+2         64.0                                43.705183                                            6.604251                                            12.248839
+3        128.0                                65.789977                                           13.225482                                            23.740463
+4        256.0                               109.027516                                           26.360749                                            43.133052
+5        512.0                               168.315057                                           48.905331                                            83.120840
+6       1024.0                               300.118362                                           80.955043                                           138.281348
+7       2048.0                               338.362123                                          117.439758                                           189.921391
+8       4096.0                               393.774778                                          114.647208                                           211.954433
+9       8192.0                               386.805422                                          140.693668                                           210.684766
+10     16384.0                               366.726540                                          142.899193                                           229.029965
+
+Benchmarking DeepSeek-V3, N=2112 K=7168
+TFLOP/s comparison (block_size=(128, 128)):
+Using default W8A8 Block FP8 kernel config. Performance might be sub-optimal! Config file not found at /workspace/vllm/vllm/model_executor/layers/quantization/utils/configs/N=2112,K=7168,device_name=NVIDIA_H100_PCIe,dtype=fp8_w8a8,block_shape=[128,128].json
+BF16 vs W8A8 Block FP8 GEMMs:
+    batch_size  torch-bf16 (TFLOP/s (larger is better))  w8a8-block-fp8-triton (TFLOP/s (larger is better))  w8a8-block-fp8-cutlass (TFLOP/s (larger is better))
+0          1.0                                 1.707773                                            0.390605                                             1.075085
+1         16.0                                26.994785                                            6.506776                                            11.254247
+2         64.0                                98.335145                                           23.309992                                            44.839329
+3        128.0                               157.497122                                           50.349819                                            88.008028
+4        256.0                               274.525261                                           97.219791                                           167.589240
+5        512.0                               322.471527                                          147.446218                                           273.888690
+6       1024.0                               395.063465                                          149.167596                                           307.551934
+7       2048.0                               427.348588                                          186.306442                                           381.305217
+8       4096.0                               424.324347                                          221.046883                                           382.391731
+9       8192.0                               421.867809                                          222.973976                                           377.004075
+10     16384.0                               428.774714                                          228.148905                                           386.753433
+
+Benchmarking DeepSeek-V3, N=24576 K=7168
+TFLOP/s comparison (block_size=(128, 128)):
+Using default W8A8 Block FP8 kernel config. Performance might be sub-optimal! Config file not found at /workspace/vllm/vllm/model_executor/layers/quantization/utils/configs/N=24576,K=7168,device_name=NVIDIA_H100_PCIe,dtype=fp8_w8a8,block_shape=[128,128].json
+BF16 vs W8A8 Block FP8 GEMMs:
+    batch_size  torch-bf16 (TFLOP/s (larger is better))  w8a8-block-fp8-triton (TFLOP/s (larger is better))  w8a8-block-fp8-cutlass (TFLOP/s (larger is better))
+0          1.0                                 1.699417                                            1.312447                                             3.289762
+1         16.0                                26.695679                                           41.997963                                            45.682402
+2         64.0                               105.501021                                          164.357688                                           183.266334
+3        128.0                               212.329399                                          205.474062                                           374.317721
+4        256.0                               340.155950                                          238.810137                                           491.974903
+5        512.0                               397.960293                                          264.616949                                           620.347046
+6       1024.0                               440.380773                                          274.027377                                           657.553569
+7       2048.0                               429.131289                                          286.277922                                           701.284259
+8       4096.0                               431.882709                                          288.798934                                           607.072955
+9       8192.0                               435.516184                                          297.321680                                           551.303925
+10     16384.0                               452.590148                                          289.651808                                           548.657258
+
+Benchmarking DeepSeek-V3, N=32768 K=512
+TFLOP/s comparison (block_size=(128, 128)):
+Using default W8A8 Block FP8 kernel config. Performance might be sub-optimal! Config file not found at /workspace/vllm/vllm/model_executor/layers/quantization/utils/configs/N=32768,K=512,device_name=NVIDIA_H100_PCIe,dtype=fp8_w8a8,block_shape=[128,128].json
+BF16 vs W8A8 Block FP8 GEMMs:
+    batch_size  torch-bf16 (TFLOP/s (larger is better))  w8a8-block-fp8-triton (TFLOP/s (larger is better))  w8a8-block-fp8-cutlass (TFLOP/s (larger is better))
+0          1.0                                 2.423313                                            0.918259                                             1.878246
+1         16.0                                35.476980                                           22.128081                                            21.755126
+2         64.0                               145.909745                                           95.608321                                            83.999830
+3        128.0                               205.545286                                          135.584566                                           169.566664
+4        256.0                               243.065070                                          159.163813                                           235.528887
+5        512.0                               310.821461                                          173.992385                                           325.081940
+6       1024.0                               339.345419                                          191.576545                                           361.393238
+7       2048.0                               369.485567                                          208.446569                                           352.589887
+8       4096.0                               356.926876                                          213.606595                                           383.905284
+9       8192.0                               371.806483                                          217.853500                                           406.019031
+10     16384.0                               370.399496                                          222.640574                                           403.917902
+
+Benchmarking DeepSeek-V3, N=7168 K=16384
+TFLOP/s comparison (block_size=(128, 128)):
+Using default W8A8 Block FP8 kernel config. Performance might be sub-optimal! Config file not found at /workspace/vllm/vllm/model_executor/layers/quantization/utils/configs/N=7168,K=16384,device_name=NVIDIA_H100_PCIe,dtype=fp8_w8a8,block_shape=[128,128].json
+BF16 vs W8A8 Block FP8 GEMMs:
+    batch_size  torch-bf16 (TFLOP/s (larger is better))  w8a8-block-fp8-triton (TFLOP/s (larger is better))  w8a8-block-fp8-cutlass (TFLOP/s (larger is better))
+0          1.0                                 1.624024                                            0.889887                                             2.986714
+1         16.0                                25.636498                                           16.790691                                            42.747740
+2         64.0                               101.503361                                           66.271731                                           158.049887
+3        128.0                               197.414615                                          130.635805                                           304.923033
+4        256.0                               339.821460                                          263.679212                                           549.335439
+5        512.0                               432.444736                                          269.334844                                           579.868855
+6       1024.0                               455.090377                                          269.188775                                           616.298302
+7       2048.0                               445.562440                                          275.288422                                           646.190247
+8       4096.0                               430.058880                                          277.171289                                           620.937598
+9       8192.0                               444.298634                                          283.576750                                           544.327053
+10     16384.0                               374.259391                                          271.898520                                           535.042856
+
+Benchmarking DeepSeek-V3, N=7168 K=18432
+TFLOP/s comparison (block_size=(128, 128)):
+Using default W8A8 Block FP8 kernel config. Performance might be sub-optimal! Config file not found at /workspace/vllm/vllm/model_executor/layers/quantization/utils/configs/N=7168,K=18432,device_name=NVIDIA_H100_PCIe,dtype=fp8_w8a8,block_shape=[128,128].json
+BF16 vs W8A8 Block FP8 GEMMs:
+    batch_size  torch-bf16 (TFLOP/s (larger is better))  w8a8-block-fp8-triton (TFLOP/s (larger is better))  w8a8-block-fp8-cutlass (TFLOP/s (larger is better))
+0          1.0                                 1.682826                                            0.915374                                             3.113245
+1         16.0                                26.439521                                           16.795061                                            45.063510
+2         64.0                               102.189736                                           66.244268                                           173.920172
+3        128.0                               200.879313                                          134.843562                                           309.786539
+4        256.0                               342.928854                                          258.820911                                           518.734919
+5        512.0                               421.429233                                          256.261022                                           579.635615
+6       1024.0                               445.693833                                          272.092871                                           620.825094
+7       2048.0                               452.898946                                          277.581704                                           638.618921
+8       4096.0                               428.062392                                          266.261253                                           625.024107
+9       8192.0                               434.014163                                          276.868687                                           545.339557
+10     16384.0                               444.524476                                          284.419373                                           555.231361
+
+Benchmarking DeepSeek-V3, N=36864 K=7168
+TFLOP/s comparison (block_size=(128, 128)):
+Using default W8A8 Block FP8 kernel config. Performance might be sub-optimal! Config file not found at /workspace/vllm/vllm/model_executor/layers/quantization/utils/configs/N=36864,K=7168,device_name=NVIDIA_H100_PCIe,dtype=fp8_w8a8,block_shape=[128,128].json
+BF16 vs W8A8 Block FP8 GEMMs:
+    batch_size  torch-bf16 (TFLOP/s (larger is better))  w8a8-block-fp8-triton (TFLOP/s (larger is better))  w8a8-block-fp8-cutlass (TFLOP/s (larger is better))
+0          1.0                                 1.764601                                            1.474352                                             3.355474
+1         16.0                                27.804434                                           35.465612                                            46.052934
+2         64.0                               109.396763                                          139.395391                                           177.720996
+3        128.0                               218.942858                                          214.121094                                           382.386490
+4        256.0                               341.078742                                          227.013175                                           533.087857
+5        512.0                               378.000424                                          254.780303                                           613.695368
+6       1024.0                               383.076067                                          286.296918                                           659.366592
+7       2048.0                               406.979464                                          293.582943                                           699.897997
+8       4096.0                               419.552335                                          298.277067                                           595.002376
+9       8192.0                               451.567256                                          298.049058                                           565.344535
+10     16384.0                               456.364667                                          306.047582                                           566.846284
+
+Benchmarking DeepSeek-V3, N=24576 K=1536
+TFLOP/s comparison (block_size=(128, 128)):
+Using default W8A8 Block FP8 kernel config. Performance might be sub-optimal! Config file not found at /workspace/vllm/vllm/model_executor/layers/quantization/utils/configs/N=24576,K=1536,device_name=NVIDIA_H100_PCIe,dtype=fp8_w8a8,block_shape=[128,128].json
+BF16 vs W8A8 Block FP8 GEMMs:
+    batch_size  torch-bf16 (TFLOP/s (larger is better))  w8a8-block-fp8-triton (TFLOP/s (larger is better))  w8a8-block-fp8-cutlass (TFLOP/s (larger is better))
+0          1.0                                 1.608338                                            1.042903                                             3.103842
+1         16.0                                24.927172                                           34.385386                                            37.418065
+2         64.0                                94.143430                                          136.675617                                           138.631998
+3        128.0                               176.985879                                          158.829420                                           272.684089
+4        256.0                               327.374997                                          193.946034                                           390.516174
+5        512.0                               346.230992                                          240.980243                                           461.872209
+6       1024.0                               392.139326                                          250.108318                                           528.680770
+7       2048.0                               415.701811                                          257.304364                                           570.864614
+8       4096.0                               412.441623                                          270.375499                                           592.046839
+9       8192.0                               419.538245                                          273.395741                                           594.049967
+10     16384.0                               427.056564                                          275.499425                                           603.860794
+
+Benchmarking DeepSeek-V3, N=12288 K=7168
+TFLOP/s comparison (block_size=(128, 128)):
+Using default W8A8 Block FP8 kernel config. Performance might be sub-optimal! Config file not found at /workspace/vllm/vllm/model_executor/layers/quantization/utils/configs/N=12288,K=7168,device_name=NVIDIA_H100_PCIe,dtype=fp8_w8a8,block_shape=[128,128].json
+BF16 vs W8A8 Block FP8 GEMMs:
+    batch_size  torch-bf16 (TFLOP/s (larger is better))  w8a8-block-fp8-triton (TFLOP/s (larger is better))  w8a8-block-fp8-cutlass (TFLOP/s (larger is better))
+0          1.0                                 1.704465                                            0.952056                                             2.925033
+1         16.0                                27.331521                                           26.466095                                            38.085021
+2         64.0                               106.775234                                          100.015972                                           152.292353
+3        128.0                               215.103108                                          196.234611                                           315.861332
+4        256.0                               359.772003                                          221.530606                                           506.553133
+5        512.0                               391.215428                                          228.679618                                           499.829132
+6       1024.0                               393.703291                                          266.618817                                           638.396690
+7       2048.0                               448.315048                                          276.385292                                           670.015151
+8       4096.0                               416.514999                                          286.267276                                           631.700855
+9       8192.0                               428.950118                                          285.490384                                           552.343842
+10     16384.0                               446.989994                                          282.983869                                           502.013470
+
+Benchmarking DeepSeek-V3, N=4096 K=7168
+TFLOP/s comparison (block_size=(128, 128)):
+Using default W8A8 Block FP8 kernel config. Performance might be sub-optimal! Config file not found at /workspace/vllm/vllm/model_executor/layers/quantization/utils/configs/N=4096,K=7168,device_name=NVIDIA_H100_PCIe,dtype=fp8_w8a8,block_shape=[128,128].json
+BF16 vs W8A8 Block FP8 GEMMs:
+    batch_size  torch-bf16 (TFLOP/s (larger is better))  w8a8-block-fp8-triton (TFLOP/s (larger is better))  w8a8-block-fp8-cutlass (TFLOP/s (larger is better))
+0          1.0                                 1.621387                                            0.628829                                             2.101762
+1         16.0                                25.280261                                           11.557160                                            20.844962
+2         64.0                               100.339766                                           47.052851                                            87.659891
+3        128.0                               191.446835                                           89.846202                                           158.832417
+4        256.0                               312.991766                                          146.781630                                           307.733236
+5        512.0                               370.103030                                          146.942383                                           323.916066
+6       1024.0                               426.505975                                          195.734182                                           424.322034
+7       2048.0                               417.242784                                          239.586975                                           536.102193
+8       4096.0                               415.967529                                          249.921619                                           554.973602
+9       8192.0                               439.134489                                          265.688177                                           552.274596
+10     16384.0                               381.928246                                          264.807066                                           560.688037
+
+Benchmarking DeepSeek-V3, N=7168 K=2048
+TFLOP/s comparison (block_size=(128, 128)):
+Using default W8A8 Block FP8 kernel config. Performance might be sub-optimal! Config file not found at /workspace/vllm/vllm/model_executor/layers/quantization/utils/configs/N=7168,K=2048,device_name=NVIDIA_H100_PCIe,dtype=fp8_w8a8,block_shape=[128,128].json
+BF16 vs W8A8 Block FP8 GEMMs:
+    batch_size  torch-bf16 (TFLOP/s (larger is better))  w8a8-block-fp8-triton (TFLOP/s (larger is better))  w8a8-block-fp8-cutlass (TFLOP/s (larger is better))
+0          1.0                                 2.187406                                            0.646858                                             1.822289
+1         16.0                                41.922942                                           16.213077                                            22.936804
+2         64.0                               135.020355                                           64.616742                                            90.039468
+3        128.0                               238.769142                                          129.894596                                           166.936124
+4        256.0                               354.733220                                          193.778702                                           307.956152
+5        512.0                               396.468693                                          226.604164                                           415.056622
+6       1024.0                               417.504310                                          239.044653                                           478.025638
+7       2048.0                               423.564266                                          247.028251                                           514.814597
+8       4096.0                               423.051453                                          249.791837                                           527.938916
+9       8192.0                               444.612201                                          266.296760                                           563.094115
+10     16384.0                               421.010717                                          271.579467                                           585.971318
+
+Benchmark finished!

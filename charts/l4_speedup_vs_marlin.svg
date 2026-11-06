@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" aria-labelledby="t d" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+<title id="t">Blockwise FP8 CUTLASS vs Marlin on an NVIDIA L4, Qwen3-8B layers</title>
+<desc id="d">Speedup over Marlin (Marlin time divided by blockwise CUTLASS time including activation quantization) for qkv_proj, o_proj, gate_up_proj and down_proj at M from 1 to 4096. Full numbers in results/blockwise-fp8-l4-2026-10-10/gemm_bench.csv.</desc>
+<style>.bg{fill:#fcfcfb}.t1{fill:#0b0b0b}.t2{fill:#52514e}.mu{fill:#898781}.grid{stroke:#e6e5e0}.base{stroke:#898781}.ring{stroke:#fcfcfb!important}.s0{stroke:#2a78d6;fill:#2a78d6}.s1{stroke:#eb6834;fill:#eb6834}.s2{stroke:#1baf7a;fill:#1baf7a}.s3{stroke:#eda100;fill:#eda100}@media (prefers-color-scheme: dark){.bg{fill:#1a1a19}.t1{fill:#f0efec}.t2{fill:#c3c2b7}.grid{stroke:#2e2e2b}.ring{stroke:#1a1a19!important}.s0{stroke:#3987e5;fill:#3987e5}.s1{stroke:#d95926;fill:#d95926}.s2{stroke:#199e70;fill:#199e70}.s3{stroke:#c98500;fill:#c98500}}</style>
+<rect class="bg" width="760" height="440" rx="8"/>
+<text class="t1" x="64" y="30" font-size="17" font-weight="600">Faster than Marlin on most layers once M grows</text>
+<text class="t2" x="64" y="50" font-size="13">NVIDIA L4 · SM89 blockwise CUTLASS kernel (vLLM PR #61224, open) vs Marlin, activation quant included</text>
+<circle class="s0" cx="69" cy="66" r="4"/>
+<text class="t2" x="78" y="70" font-size="12">qkv_proj</text>
+<circle class="s1" cx="165" cy="66" r="4"/>
+<text class="t2" x="174" y="70" font-size="12">o_proj</text>
+<circle class="s2" cx="245" cy="66" r="4"/>
+<text class="t2" x="254" y="70" font-size="12">gate_up_proj</text>
+<circle class="s3" cx="373" cy="66" r="4"/>
+<text class="t2" x="382" y="70" font-size="12">down_proj</text>
+<line class="base" x1="64" x2="628" y1="351.6" y2="351.6" stroke-width="1" stroke-dasharray="5 4"/>
+<text class="mu" x="56" y="355.6" font-size="12" text-anchor="end">1.0x</text>
+<line class="grid" x1="64" x2="628" y1="286.7" y2="286.7" stroke-width="1"/>
+<text class="mu" x="56" y="290.7" font-size="12" text-anchor="end">1.5x</text>
+<line class="grid" x1="64" x2="628" y1="221.8" y2="221.8" stroke-width="1"/>
+<text class="mu" x="56" y="225.8" font-size="12" text-anchor="end">2.0x</text>
+<line class="grid" x1="64" x2="628" y1="156.9" y2="156.9" stroke-width="1"/>
+<text class="mu" x="56" y="160.9" font-size="12" text-anchor="end">2.5x</text>
+<line class="grid" x1="64" x2="628" y1="92.0" y2="92.0" stroke-width="1"/>
+<text class="mu" x="56" y="96.0" font-size="12" text-anchor="end">3.0x</text>
+<text class="mu" x="628" y="366.6" font-size="11" text-anchor="end">below this line: slower than Marlin</text>
+<text class="mu" x="64.0" y="404" font-size="12" text-anchor="middle">1</text>
+<text class="mu" x="158.0" y="404" font-size="12" text-anchor="middle">4</text>
+<text class="mu" x="252.0" y="404" font-size="12" text-anchor="middle">16</text>
+<text class="mu" x="346.0" y="404" font-size="12" text-anchor="middle">64</text>
+<text class="mu" x="440.0" y="404" font-size="12" text-anchor="middle">256</text>
+<text class="mu" x="534.0" y="404" font-size="12" text-anchor="middle">1024</text>
+<text class="mu" x="628.0" y="404" font-size="12" text-anchor="middle">4096</text>
+<text class="t2" x="346" y="428" font-size="12" text-anchor="middle">M (tokens in the batch), log scale</text>
+<path class="s0" d="M64.0,347.2 L252.0,339.3 L299.0,338.9 L346.0,298.4 L393.0,288.8 L440.0,259.3 L487.0,233.7 L534.0,271.4 L581.0,290.9 L628.0,288.0" fill="none" stroke-width="2" stroke-linejoin="round" style="fill:none"/>
+<circle class="s0 ring" cx="64.0" cy="347.2" r="4" stroke-width="2" ><title>qkv_proj, M=1: 1.03x vs Marlin</title></circle>
+<circle class="s0 ring" cx="252.0" cy="339.3" r="4" stroke-width="2" ><title>qkv_proj, M=16: 1.09x vs Marlin</title></circle>
+<circle class="s0 ring" cx="299.0" cy="338.9" r="4" stroke-width="2" ><title>qkv_proj, M=32: 1.10x vs Marlin</title></circle>
+<circle class="s0 ring" cx="346.0" cy="298.4" r="4" stroke-width="2" ><title>qkv_proj, M=64: 1.41x vs Marlin</title></circle>
+<circle class="s0 ring" cx="393.0" cy="288.8" r="4" stroke-width="2" ><title>qkv_proj, M=128: 1.48x vs Marlin</title></circle>
+<circle class="s0 ring" cx="440.0" cy="259.3" r="4" stroke-width="2" ><title>qkv_proj, M=256: 1.71x vs Marlin</title></circle>
+<circle class="s0 ring" cx="487.0" cy="233.7" r="4" stroke-width="2" ><title>qkv_proj, M=512: 1.91x vs Marlin</title></circle>
+<circle class="s0 ring" cx="534.0" cy="271.4" r="4" stroke-width="2" ><title>qkv_proj, M=1024: 1.62x vs Marlin</title></circle>
+<circle class="s0 ring" cx="581.0" cy="290.9" r="4" stroke-width="2" ><title>qkv_proj, M=2048: 1.47x vs Marlin</title></circle>
+<circle class="s0 ring" cx="628.0" cy="288.0" r="4" stroke-width="2" ><title>qkv_proj, M=4096: 1.49x vs Marlin</title></circle>
+<path class="s1" d="M64.0,373.2 L252.0,362.0 L299.0,349.6 L346.0,339.4 L393.0,347.8 L440.0,354.2 L487.0,274.5 L534.0,281.2 L581.0,284.2 L628.0,288.3" fill="none" stroke-width="2" stroke-linejoin="round" style="fill:none"/>
+<circle class="s1 ring" cx="64.0" cy="373.2" r="4" stroke-width="2" ><title>o_proj, M=1: 0.83x vs Marlin</title></circle>
+<circle class="s1 ring" cx="252.0" cy="362.0" r="4" stroke-width="2" ><title>o_proj, M=16: 0.92x vs Marlin</title></circle>
+<circle class="s1 ring" cx="299.0" cy="349.6" r="4" stroke-width="2" ><title>o_proj, M=32: 1.01x vs Marlin</title></circle>
+<circle class="s1 ring" cx="346.0" cy="339.4" r="4" stroke-width="2" ><title>o_proj, M=64: 1.09x vs Marlin</title></circle>
+<circle class="s1 ring" cx="393.0" cy="347.8" r="4" stroke-width="2" ><title>o_proj, M=128: 1.03x vs Marlin</title></circle>
+<circle class="s1 ring" cx="440.0" cy="354.2" r="4" stroke-width="2" ><title>o_proj, M=256: 0.98x vs Marlin</title></circle>
+<circle class="s1 ring" cx="487.0" cy="274.5" r="4" stroke-width="2" ><title>o_proj, M=512: 1.59x vs Marlin</title></circle>
+<circle class="s1 ring" cx="534.0" cy="281.2" r="4" stroke-width="2" ><title>o_proj, M=1024: 1.54x vs Marlin</title></circle>
+<circle class="s1 ring" cx="581.0" cy="284.2" r="4" stroke-width="2" ><title>o_proj, M=2048: 1.52x vs Marlin</title></circle>
+<circle class="s1 ring" cx="628.0" cy="288.3" r="4" stroke-width="2" ><title>o_proj, M=4096: 1.49x vs Marlin</title></circle>
+<path class="s2" d="M64.0,361.5 L252.0,363.0 L299.0,359.9 L346.0,359.0 L393.0,270.9 L440.0,201.8 L487.0,179.4 L534.0,152.9 L581.0,109.7 L628.0,94.2" fill="none" stroke-width="2" stroke-linejoin="round" style="fill:none"/>
+<circle class="s2 ring" cx="64.0" cy="361.5" r="4" stroke-width="2" ><title>gate_up_proj, M=1: 0.92x vs Marlin</title></circle>
+<circle class="s2 ring" cx="252.0" cy="363.0" r="4" stroke-width="2" ><title>gate_up_proj, M=16: 0.91x vs Marlin</title></circle>
+<circle class="s2 ring" cx="299.0" cy="359.9" r="4" stroke-width="2" ><title>gate_up_proj, M=32: 0.94x vs Marlin</title></circle>
+<circle class="s2 ring" cx="346.0" cy="359.0" r="4" stroke-width="2" ><title>gate_up_proj, M=64: 0.94x vs Marlin</title></circle>
+<circle class="s2 ring" cx="393.0" cy="270.9" r="4" stroke-width="2" ><title>gate_up_proj, M=128: 1.62x vs Marlin</title></circle>
+<circle class="s2 ring" cx="440.0" cy="201.8" r="4" stroke-width="2" ><title>gate_up_proj, M=256: 2.15x vs Marlin</title></circle>
+<circle class="s2 ring" cx="487.0" cy="179.4" r="4" stroke-width="2" ><title>gate_up_proj, M=512: 2.33x vs Marlin</title></circle>
+<circle class="s2 ring" cx="534.0" cy="152.9" r="4" stroke-width="2" ><title>gate_up_proj, M=1024: 2.53x vs Marlin</title></circle>
+<circle class="s2 ring" cx="581.0" cy="109.7" r="4" stroke-width="2" ><title>gate_up_proj, M=2048: 2.86x vs Marlin</title></circle>
+<circle class="s2 ring" cx="628.0" cy="94.2" r="4" stroke-width="2" ><title>gate_up_proj, M=4096: 2.98x vs Marlin</title></circle>
+<path class="s3" d="M64.0,297.7 L252.0,335.8 L299.0,342.4 L346.0,361.7 L393.0,354.5 L440.0,288.6 L487.0,269.5 L534.0,261.1 L581.0,245.7 L628.0,291.6" fill="none" stroke-width="2" stroke-linejoin="round" style="fill:none"/>
+<circle class="s3 ring" cx="64.0" cy="297.7" r="4" stroke-width="2" ><title>down_proj, M=1: 1.41x vs Marlin</title></circle>
+<circle class="s3 ring" cx="252.0" cy="335.8" r="4" stroke-width="2" ><title>down_proj, M=16: 1.12x vs Marlin</title></circle>
+<circle class="s3 ring" cx="299.0" cy="342.4" r="4" stroke-width="2" ><title>down_proj, M=32: 1.07x vs Marlin</title></circle>
+<circle class="s3 ring" cx="346.0" cy="361.7" r="4" stroke-width="2" ><title>down_proj, M=64: 0.92x vs Marlin</title></circle>
+<circle class="s3 ring" cx="393.0" cy="354.5" r="4" stroke-width="2" ><title>down_proj, M=128: 0.98x vs Marlin</title></circle>
+<circle class="s3 ring" cx="440.0" cy="288.6" r="4" stroke-width="2" ><title>down_proj, M=256: 1.49x vs Marlin</title></circle>
+<circle class="s3 ring" cx="487.0" cy="269.5" r="4" stroke-width="2" ><title>down_proj, M=512: 1.63x vs Marlin</title></circle>
+<circle class="s3 ring" cx="534.0" cy="261.1" r="4" stroke-width="2" ><title>down_proj, M=1024: 1.70x vs Marlin</title></circle>
+<circle class="s3 ring" cx="581.0" cy="245.7" r="4" stroke-width="2" ><title>down_proj, M=2048: 1.82x vs Marlin</title></circle>
+<circle class="s3 ring" cx="628.0" cy="291.6" r="4" stroke-width="2" ><title>down_proj, M=4096: 1.46x vs Marlin</title></circle>
+<circle class="s2" cx="642" cy="90.2" r="4"/>
+<text class="t2" x="652" y="94.2" font-size="12">gate_up_proj 2.98x</text>
+<circle class="s0" cx="642" cy="284.0" r="4"/>
+<text class="t2" x="652" y="288.0" font-size="12">qkv_proj 1.49x</text>
+<circle class="s1" cx="642" cy="300.0" r="4"/>
+<text class="t2" x="652" y="304.0" font-size="12">o_proj 1.49x</text>
+<circle class="s3" cx="642" cy="316.0" r="4"/>
+<text class="t2" x="652" y="320.0" font-size="12">down_proj 1.46x</text>
+</svg>

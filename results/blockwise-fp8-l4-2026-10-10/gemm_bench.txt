@@ -1,0 +1,76 @@
+== environment ==
+  gpu: NVIDIA L4
+  capability: sm89
+  vllm: ?
+  torch: 2.13.0+cu129
+  cuda: 12.9
+  python: 3.12.3
+  cutlass_block_fp8_supported: True
+  default_block_fp8_kernel: unknown (AssertionError: Current vLLM config is not set. This typically means get_current_vllm_config() was called outside of a set_current_vllm_config() context, or a CustomOp was instantiated at module import time or model forward time when config is not set. For tests that directly test custom ops/modules, use the 'default_vllm_config' pytest fixture from tests/conftest.py.)
+Using default W8A8 Block FP8 kernel config. Performance might be sub-optimal! Config file not found at /workspace/vllm/vllm/model_executor/layers/quantization/utils/configs/N=6144,K=4096,device_name=NVIDIA_L4,dtype=fp8_w8a8,block_shape=[128,128].json
+qkv_proj      M=    1  bf16    202.8  marlin     20.6  triton_blk     75.2 (+q     77.2)  cutlass_pt     20.9 (+q     23.0)  cutlass_blk     17.4 (+q     20.0)  us
+qkv_proj      M=   16  bf16     48.3  marlin     23.8  triton_blk     46.2 (+q     49.2)  cutlass_pt     23.4 (+q     26.1)  cutlass_blk     19.0 (+q     21.7)  us
+qkv_proj      M=   32  bf16     76.4  marlin     31.6  triton_blk     47.7 (+q     53.1)  cutlass_pt     41.0 (+q     43.5)  cutlass_blk     25.7 (+q     28.8)  us
+qkv_proj      M=   64  bf16     88.5  marlin     53.1  triton_blk     49.9 (+q     57.1)  cutlass_pt     53.6 (+q     56.7)  cutlass_blk     33.9 (+q     37.6)  us
+qkv_proj      M=  128  bf16    144.4  marlin    102.4  triton_blk     79.2 (+q     84.4)  cutlass_pt     67.1 (+q     71.2)  cutlass_blk     63.6 (+q     69.0)  us
+qkv_proj      M=  256  bf16    268.0  marlin    228.0  triton_blk    170.3 (+q    169.2)  cutlass_pt    122.2 (+q    127.0)  cutlass_blk    123.8 (+q    133.3)  us
+qkv_proj      M=  512  bf16    415.1  marlin    534.9  triton_blk    311.9 (+q    307.6)  cutlass_pt    225.3 (+q    282.8)  cutlass_blk    302.3 (+q    280.3)  us
+qkv_proj      M= 1024  bf16    993.8  marlin    865.9  triton_blk    565.9 (+q    596.2)  cutlass_pt    518.7 (+q    602.0)  cutlass_blk    504.2 (+q    535.2)  us
+qkv_proj      M= 2048  bf16   1742.0  marlin   1764.7  triton_blk   1267.2 (+q   1327.6)  cutlass_pt    991.0 (+q   1127.9)  cutlass_blk   1085.9 (+q   1202.5)  us
+qkv_proj      M= 4096  bf16   3472.5  marlin   3496.3  triton_blk   2549.1 (+q   2746.4)  cutlass_pt   2075.6 (+q   2276.0)  cutlass_blk   2170.9 (+q   2347.2)  us
+  [check] qkv_proj: triton_blk rel. error vs dequant ref = 1.66e-03
+  [check] qkv_proj: cutlass_blk M=1 rel. error = 1.65e-03 OK
+  [check] qkv_proj: cutlass_blk M=64 rel. error = 1.66e-03 OK
+  [check] qkv_proj: cutlass_blk M=65 rel. error = 1.67e-03 OK
+  [check] qkv_proj: cutlass_blk M=1026 rel. error = 1.66e-03 OK
+Using default W8A8 Block FP8 kernel config. Performance might be sub-optimal! Config file not found at /workspace/vllm/vllm/model_executor/layers/quantization/utils/configs/N=4096,K=4096,device_name=NVIDIA_L4,dtype=fp8_w8a8,block_shape=[128,128].json
+o_proj        M=    1  bf16    128.9  marlin     16.0  triton_blk     61.5 (+q     65.1)  cutlass_pt     19.1 (+q     21.4)  cutlass_blk     16.4 (+q     19.2)  us
+o_proj        M=   16  bf16     34.0  marlin     18.3  triton_blk     46.0 (+q     48.3)  cutlass_pt     21.2 (+q     23.5)  cutlass_blk     16.7 (+q     19.9)  us
+o_proj        M=   32  bf16     38.5  marlin     24.0  triton_blk     45.5 (+q     48.3)  cutlass_pt     35.8 (+q     38.4)  cutlass_blk     20.8 (+q     23.6)  us
+o_proj        M=   64  bf16     39.4  marlin     38.2  triton_blk     46.2 (+q     49.5)  cutlass_pt     47.1 (+q     50.0)  cutlass_blk     31.4 (+q     35.0)  us
+o_proj        M=  128  bf16     75.6  marlin     62.6  triton_blk     61.4 (+q     65.4)  cutlass_pt     54.7 (+q     58.2)  cutlass_blk     51.4 (+q     60.8)  us
+o_proj        M=  256  bf16    120.2  marlin    117.7  triton_blk    143.9 (+q    141.3)  cutlass_pt     97.2 (+q     99.0)  cutlass_blk    117.2 (+q    120.1)  us
+o_proj        M=  512  bf16    229.4  marlin    298.8  triton_blk    229.4 (+q    227.6)  cutlass_pt    182.0 (+q    185.1)  cutlass_blk    163.9 (+q    187.5)  us
+o_proj        M= 1024  bf16    492.6  marlin    581.0  triton_blk    394.3 (+q    405.6)  cutlass_pt    323.3 (+q    346.0)  cutlass_blk    371.5 (+q    376.6)  us
+o_proj        M= 2048  bf16   1445.0  marlin   1174.8  triton_blk    792.2 (+q    896.8)  cutlass_pt    633.2 (+q    708.0)  cutlass_blk    679.0 (+q    773.5)  us
+o_proj        M= 4096  bf16   2179.4  marlin   2415.0  triton_blk   1673.1 (+q   1832.3)  cutlass_pt   1337.0 (+q   1617.0)  cutlass_blk   1445.9 (+q   1624.0)  us
+  [check] o_proj: triton_blk rel. error vs dequant ref = 1.66e-03
+  [check] o_proj: cutlass_blk M=1 rel. error = 1.68e-03 OK
+  [check] o_proj: cutlass_blk M=64 rel. error = 1.66e-03 OK
+  [check] o_proj: cutlass_blk M=65 rel. error = 1.66e-03 OK
+  [check] o_proj: cutlass_blk M=1026 rel. error = 1.66e-03 OK
+Using default W8A8 Block FP8 kernel config. Performance might be sub-optimal! Config file not found at /workspace/vllm/vllm/model_executor/layers/quantization/utils/configs/N=24576,K=4096,device_name=NVIDIA_L4,dtype=fp8_w8a8,block_shape=[128,128].json
+gate_up_proj  M=    1  bf16    772.9  marlin    399.1  triton_blk    440.9 (+q    449.9)  cutlass_pt    414.4 (+q    416.6)  cutlass_blk    428.8 (+q    432.1)  us
+gate_up_proj  M=   16  bf16    815.4  marlin    406.7  triton_blk    447.6 (+q    453.2)  cutlass_pt    425.7 (+q    427.7)  cutlass_blk    442.0 (+q    445.9)  us
+gate_up_proj  M=   32  bf16    895.5  marlin    414.8  triton_blk    453.0 (+q    458.7)  cutlass_pt    434.0 (+q    434.5)  cutlass_blk    437.4 (+q    443.2)  us
+gate_up_proj  M=   64  bf16    896.5  marlin    440.5  triton_blk    461.2 (+q    468.9)  cutlass_pt    458.8 (+q    469.3)  cutlass_blk    461.3 (+q    467.2)  us
+gate_up_proj  M=  128  bf16    924.0  marlin    838.2  triton_blk    570.6 (+q    560.5)  cutlass_pt    531.2 (+q    515.1)  cutlass_blk    509.2 (+q    516.8)  us
+gate_up_proj  M=  256  bf16   1666.1  marlin   1647.0  triton_blk    808.4 (+q    870.3)  cutlass_pt    748.3 (+q    768.9)  cutlass_blk    785.1 (+q    764.7)  us
+gate_up_proj  M=  512  bf16   2021.8  marlin   3043.6  triton_blk   1468.4 (+q   1506.8)  cutlass_pt   1243.9 (+q   1254.1)  cutlass_blk   1299.8 (+q   1308.4)  us
+gate_up_proj  M= 1024  bf16   3521.4  marlin   6404.8  triton_blk   2576.3 (+q   2680.6)  cutlass_pt   2273.0 (+q   2376.5)  cutlass_blk   2440.2 (+q   2530.8)  us
+gate_up_proj  M= 2048  bf16   6976.7  marlin  13241.3  triton_blk   4988.5 (+q   5117.1)  cutlass_pt   4599.9 (+q   4717.9)  cutlass_blk   4421.0 (+q   4623.7)  us
+gate_up_proj  M= 4096  bf16  14088.2  marlin  26559.4  triton_blk  10317.2 (+q  10513.4)  cutlass_pt   9707.3 (+q   9909.4)  cutlass_blk   8765.9 (+q   8902.4)  us
+  [check] gate_up_proj: triton_blk rel. error vs dequant ref = 1.66e-03
+  [check] gate_up_proj: cutlass_blk M=1 rel. error = 1.64e-03 OK
+  [check] gate_up_proj: cutlass_blk M=64 rel. error = 1.66e-03 OK
+  [check] gate_up_proj: cutlass_blk M=65 rel. error = 1.66e-03 OK
+  [check] gate_up_proj: cutlass_blk M=1026 rel. error = 1.66e-03 OK
+Using default W8A8 Block FP8 kernel config. Performance might be sub-optimal! Config file not found at /workspace/vllm/vllm/model_executor/layers/quantization/utils/configs/N=4096,K=12288,device_name=NVIDIA_L4,dtype=fp8_w8a8,block_shape=[128,128].json
+down_proj     M=    1  bf16    390.7  marlin     62.3  triton_blk    163.5 (+q    162.9)  cutlass_pt    136.3 (+q    141.0)  cutlass_blk     40.6 (+q     44.0)  us
+down_proj     M=   16  bf16    440.4  marlin     75.4  triton_blk    164.8 (+q    169.0)  cutlass_pt    146.7 (+q    159.1)  cutlass_blk     50.4 (+q     67.2)  us
+down_proj     M=   32  bf16    480.7  marlin    109.8  triton_blk    163.8 (+q    168.4)  cutlass_pt    238.1 (+q    244.1)  cutlass_blk     70.3 (+q    102.5)  us
+down_proj     M=   64  bf16    486.5  marlin    174.7  triton_blk    169.3 (+q    222.8)  cutlass_pt    246.5 (+q    271.9)  cutlass_blk    128.5 (+q    189.5)  us
+down_proj     M=  128  bf16    485.8  marlin    245.1  triton_blk    332.4 (+q    318.9)  cutlass_pt    277.0 (+q    339.0)  cutlass_blk    205.1 (+q    250.7)  us
+down_proj     M=  256  bf16    544.6  marlin    659.4  triton_blk    501.5 (+q    474.0)  cutlass_pt    318.2 (+q    356.7)  cutlass_blk    420.4 (+q    443.9)  us
+down_proj     M=  512  bf16    897.4  marlin   1169.6  triton_blk    769.6 (+q    768.7)  cutlass_pt    558.0 (+q    637.0)  cutlass_blk    607.2 (+q    716.7)  us
+down_proj     M= 1024  bf16   1940.5  marlin   2102.0  triton_blk   1321.6 (+q   1415.4)  cutlass_pt   1062.0 (+q   1111.9)  cutlass_blk   1169.2 (+q   1238.5)  us
+down_proj     M= 2048  bf16   3743.1  marlin   4443.3  triton_blk   2457.1 (+q   2802.8)  cutlass_pt   2253.4 (+q   2495.7)  cutlass_blk   2084.3 (+q   2447.6)  us
+down_proj     M= 4096  bf16   7594.7  marlin   9003.1  triton_blk   5030.3 (+q   5583.8)  cutlass_pt   4424.6 (+q   5013.3)  cutlass_blk   5613.8 (+q   6159.0)  us
+  [check] down_proj: triton_blk rel. error vs dequant ref = 1.67e-03
+  [check] down_proj: cutlass_blk M=1 rel. error = 1.67e-03 OK
+  [check] down_proj: cutlass_blk M=64 rel. error = 1.66e-03 OK
+  [check] down_proj: cutlass_blk M=65 rel. error = 1.66e-03 OK
+  [check] down_proj: cutlass_blk M=1026 rel. error = 1.66e-03 OK
+
+wrote results_sm89_block_fp8.csv and results_sm89_block_fp8.md
+total 47s
